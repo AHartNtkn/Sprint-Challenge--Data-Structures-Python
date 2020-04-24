@@ -1,5 +1,5 @@
 import time
-from hashtable import *
+from binary_search_tree import *
 
 start_time = time.time()
 
@@ -13,14 +13,14 @@ f.close()
 
 duplicates = []  # Return the list of duplicates in this data structure
 
-# Load names into the hashtable.
-name_table = HashTable(10000)
+# Load names into the binary search tree.
+name_tree = BinarySearchTree(names_1[0])
 for n in names_1[1:]:
-    name_table.insert(n, True)
+    name_tree.insert(n)
 
-# Duplicate names will be in table already.
+# Duplicate names will be in the tree already.
 for name_2 in names_2:
-    if name_table.retrieve(name_2):
+    if name_tree.contains(name_2):
           duplicates.append(name_2)
 
 end_time = time.time()
