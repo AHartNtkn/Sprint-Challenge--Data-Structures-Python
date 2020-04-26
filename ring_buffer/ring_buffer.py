@@ -41,14 +41,11 @@ class ArrayRingBuffer:
         self.storage = [None] * capacity
 
     def append(self, item):
-        if len(self.storage) == self.capacity:
-            self.storage[self.current] = item
-            if self.current is len(self.storage) - 1:
-              self.current = 0
-            else:
-              self.current += 1
+        self.storage[self.current] = item
+        if self.current is len(self.storage) - 1:
+            self.current = 0
         else:
-            self.storage.append(item)
+            self.current += 1
 
     def get(self):
         return [ x for x in self.storage if x is not None ]
